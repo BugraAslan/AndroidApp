@@ -2,8 +2,10 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <EditText
@@ -14,45 +16,60 @@
         android:layout_marginTop="91dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="24dp"
-        android:autofillHints=""
-        android:ems="10"
+        android:inputType="text"
         android:hint="@string/edit_message"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/sendButton"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/showButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/messageView"
-        android:layout_width="254dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="280dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:soundEffectsEnabled="false"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textIsSelectable="false"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sendButton"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/showButton" />
 
     <Button
-        android:id="@+id/sendButton"
-        android:layout_width="186dp"
-        android:layout_height="39dp"
+        android:id="@+id/showButton"
+        android:layout_width="156dp"
+        android:layout_height="41dp"
         android:layout_marginBottom="77dp"
         android:background="#03A9F4"
-        android:hint="@string/button_send"
-        android:onClick="sendMessageAction"
-        android:text="Show Message"
+        android:onClick="showMessageAction"
+        android:text="@string/show_message"
+        android:textAllCaps="false"
+        android:textColor="#F9F9F9"
         app:layout_constraintBottom_toTopOf="@+id/messageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="176dp"
+        android:background="#FA1212"
+        android:onClick="clearMessage"
+        android:text="@string/clear"
+        android:textAllCaps="false"
+        android:textColor="#F9F9F9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

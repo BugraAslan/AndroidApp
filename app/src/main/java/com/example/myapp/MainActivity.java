@@ -1,6 +1,5 @@
 package com.example.myapp;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected EditText textInput;
 
-    protected Button sendButton;
+    protected Button showButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,25 +39,28 @@ public class MainActivity extends AppCompatActivity {
 
         this.showMessage = (TextView) findViewById(R.id.messageView);
         this.textInput = (EditText) findViewById(R.id.editText);
-        this.sendButton = (Button) findViewById(R.id.sendButton);
+        this.showButton = (Button) findViewById(R.id.showButton);
     }
 
-    public void sendMessageAction(View view) {
-        /*
-        if (messageView.getVisibility() == View.INVISIBLE){
-            messageView.setVisibility(View.VISIBLE);
-            messageView.setText(editText.getText().toString());
-        }*/
+    public void showMessageAction(View view) {
+        String textInputValue = this.textInput.getText().toString();
+        if (textInputValue.trim().isEmpty()){
+            textInputValue = "Bir şey yazmadınki gardaşım!";
+        }
 
-        this.showMessage.setText(this.textInput.getText().toString());
-        //this.showMessage.setVisibility(View.VISIBLE);
+        this.showMessage.setText(textInputValue);
 
+        if (this.showMessage.getVisibility() == View.INVISIBLE){
+            this.showMessage.setVisibility(View.VISIBLE);
+        }
+    }
 
-        //startActivity(new Intent());
-        /*Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);*/
+    public void clearMessage(View view) {
+        this.textInput.setText(null);
+        this.showMessage.setText(null);
+
+        if (this.showMessage.getVisibility() == View.VISIBLE){
+            this.showMessage.setVisibility(View.INVISIBLE);
+        }
     }
 }
